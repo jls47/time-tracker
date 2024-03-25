@@ -1,33 +1,42 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import CreateItem from './CreateItem'
+import TrackedItem from './TrackedItem'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(() => {
+
+  })
+
+  const items = [];
+  for(var i in localStorage) {
+    console.log(i);
+    if(i === "length") {
+      break;
+    }
+    items.push(
+    <TrackedItem 
+    name={i}
+    key={i}
+    />);
+  }
+  console.log(items);
+
+  const things = items.map(item => 
+    <li key={item.key}>{item}</li>
+  );
+
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Time Tracker</h1>
+      <CreateItem></CreateItem>
+      <ul style={{ listStyleType: 'none' }}>
+        {things}
+      </ul>
     </>
   )
 }
