@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BsRadioactive } from "react-icons/bs";
 import CreateItem from './CreateItem'
 import TrackedItem from './TrackedItem'
 import './App.css'
@@ -11,6 +10,11 @@ function App() {
   useEffect(() => {
 
   })
+
+  const nuke = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
 
   const items = [];
   for(var i in localStorage) {
@@ -37,6 +41,7 @@ function App() {
       <ul style={{ listStyleType: 'none' }}>
         {things}
       </ul>
+      <button onClick = {nuke}><BsRadioactive /></button>
     </>
   )
 }

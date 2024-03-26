@@ -16,32 +16,36 @@ function TrackedItem(props) {
     }
 
     const startTrack = (event) => {
+        console.log(event);
         setStart(Date.now());
         setTracking(true);
     }
 
     const stopTrack = (event) => {
         setTracking(false);
-        localStorage.setItem(event.target.name, Date.now() - start);
+        let startingTime = (localStorage.getItem(event.target.name) == null) ? 
+        0 : localStorage.getItem(event.target.name);
+
+        localStorage.setItem(event.target.name, startingTime + (Date.now() - start));
         window.location.reload();
     }
 
     return (
         <div className="card">
-            {name}    
+            {name} | 
             {tracking == true ?
 
                 <button name = {name} onClick={stopTrack}>
-                    <BsHourglassSplit />
+                    Stop tracking
                 </button>
                 :
 
                 <button name = {name} onClick={startTrack}>
-                    <BsHourglassBottom />
+                    Start tracking
                 </button>
-            }
+            } | 
             <button name = {name} onClick={handleDelete}>
-                <BsFillTrash3Fill />
+                Delete item
             </button>
 
             <br/>

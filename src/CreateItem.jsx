@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
 function CreateItem() {
-    const [count, setCount] = useState(0)
-    const [start, setStart] = useState(0)
     const [item, setItem] = useState("")
 
     const handleChange = (event) => {
