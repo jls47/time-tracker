@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BsRadioactive } from "react-icons/bs";
+import { BsRadioactive, BsClockHistory } from "react-icons/bs";
 import CreateItem from './CreateItem'
 import TrackedItem from './TrackedItem'
 import './App.css'
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <h1>Time Tracker</h1>
+    <h1><BsClockHistory /></h1>
       <CreateItem></CreateItem>
       <ul style={{ listStyleType: 'none' }}>
         {things}

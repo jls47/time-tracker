@@ -8,9 +8,11 @@ function CreateItem() {
     }
 
     const handleClick = () => {
-        localStorage.setItem(item, 0);
-        window.dispatchEvent(new Event('storage'));
-        window.location.reload();
+        if(item != "") {
+            localStorage.setItem(item, 0);
+            window.dispatchEvent(new Event('storage'));
+            window.location.reload();
+        }
     }
 
     return(
