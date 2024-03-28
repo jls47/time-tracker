@@ -17,17 +17,25 @@ function TrackedItem(props) {
     }
 
     var mins = Math.floor((time - (hours * 60 * 60 * 1000)) / 1000 / 60);
+    if(mins >= 1 && hours >= 1) {
+        timeTracked += ", ";
+    }
     if (mins > 1) {
-        timeTracked += ", " + mins + " minutes"
+        timeTracked += "" + mins + " minutes"
     } else if (mins == 1) {
-        timeTracked += ", 1 minute"
+        timeTracked += "1 minute"
     }
 
+
     var secs = Math.floor((time - (hours * 60 * 60 * 1000) - (mins * 60 * 1000)) / 1000);
+
+    if((mins >= 1 || hours >= 1) && secs >= 1) {
+        timeTracked += ", ";
+    }
     if (secs > 1) {
-        timeTracked += ", " + secs + " seconds"
+        timeTracked += secs + " seconds"
     } else if (secs == 1) {
-        timeTracked += ", 1 second"
+        timeTracked += "1 second"
     }
     
     const handleDelete = (event) => {
